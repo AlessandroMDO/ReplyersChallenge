@@ -27,6 +27,11 @@ public class Main {
             int y_dim = Integer.parseInt(dimensions[0]);
             int x_dim = Integer.parseInt(dimensions[1]);
 
+//            if (y_dim > 1000 || y_dim < 2 || x_dim > 1000 || x_dim < 2 ){
+//                throw new IllegalStateException("Width (W) and Height (H) must be 10 <=W,H <=1000");
+//            }
+
+
             Board office = new Board(x_dim, y_dim);
             office.populateOffice();
 
@@ -42,6 +47,11 @@ public class Main {
             }
 
             int nDev = Integer.parseInt(br.readLine());
+
+//            if (nDev > 10000 || nDev < 10){
+//                throw new IllegalStateException("Number of Developers must be 10<= nD <= 10000");
+//            }
+
             for (int i = 0; i < nDev; i++) {
                 String[] devs = br.readLine().split(" ");
                 String[] skills = Arrays.copyOfRange(devs, 3, devs.length);
@@ -53,14 +63,29 @@ public class Main {
             }
 
             int nPM = Integer.parseInt(br.readLine());
+
+//            if (nPM > 2000 || nPM < 2){
+//                throw new IllegalStateException("Number of Developers must be 10<= nPM <= 10000");
+//            }
+
             for (int i = 0; i < nPM; i++) {
                 String[] pms = br.readLine().split(" ");
                 listMP.add(new ProjectManager(new Company(pms[0]), Integer.parseInt(pms[1])));
 
             }
 
+            for (Developer dev1 : listDevs){
+                for (Developer dev2: listDevs){
+                    System.out.println(Developer.workPotential(dev1,dev2));
+                }
+            }
 
-            //office.showOffice();
+
+
+
+
+
+            office.showOffice();
 
 
         } catch (FileNotFoundException e) {
