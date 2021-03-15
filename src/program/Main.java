@@ -3,6 +3,7 @@ package program;
 import entities.Company;
 import entities.Developer;
 import entities.ProjectManager;
+import entities.Replyers;
 import entities.board.Board;
 import enums.Skills;
 
@@ -55,18 +56,23 @@ public class Main {
             for (int i = 0; i < nDev; i++) {
                 String[] devs = br.readLine().split(" ");
                 String[] skills = Arrays.copyOfRange(devs, 3, devs.length);
+
+                if (skills.length > 100 || skills.length < 2) {
+                    throw new IllegalStateException("The number os skills N must be 2 <= N <= 100");
+                }
+
                 listDevs.add(new Developer(new Company(
                         devs[0]),
-                        Double.parseDouble(devs[1]),
+                        Integer.parseInt(devs[1]),
                         Integer.parseInt(devs[2]),
                         skills));
             }
 
             int nPM = Integer.parseInt(br.readLine());
 
-//            if (nPM > 2000 || nPM < 2){
-//                throw new IllegalStateException("Number of Developers must be 10<= nPM <= 10000");
-//            }
+            if (nPM > 2000 || nPM < 2) {
+                throw new IllegalStateException("Number of Developers must be 10<= nPM <= 10000");
+            }
 
             for (int i = 0; i < nPM; i++) {
                 String[] pms = br.readLine().split(" ");
@@ -74,16 +80,7 @@ public class Main {
 
             }
 
-            for (Developer dev1 : listDevs){
-                for (Developer dev2: listDevs){
-                    System.out.println(Developer.workPotential(dev1,dev2));
-                }
-            }
-
-
-
-
-
+//
 
             office.showOffice();
 

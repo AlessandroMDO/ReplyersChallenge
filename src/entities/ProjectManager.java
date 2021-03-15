@@ -2,7 +2,7 @@ package entities;
 
 public class ProjectManager extends Replyers {
 
-    public ProjectManager(Company company, double bonus) {
+    public ProjectManager(Company company, int bonus) {
         super(company, bonus);
     }
 
